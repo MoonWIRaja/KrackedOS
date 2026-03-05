@@ -1,0 +1,17 @@
+node_modules/
+.next/
+dist/
+!ide/vscode-kd-pixel-panel/dist/
+!ide/vscode-kd-pixel-panel/dist/**
+ide/vscode-kd-pixel-panel/dist/webview/kd-asset-pack/
+ide/vscode-kd-pixel-panel/*.vsix
+*.db
+.env
+.env.local
+Assets.zip
+/Office Tileset (Donarg).zip
+.DS_Store
+Thumbs.db
+*.log
+coverage/
+.cache/

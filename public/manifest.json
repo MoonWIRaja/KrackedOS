@@ -1,0 +1,58 @@
+{
+    "name": "KRACKED_OS",
+    "short_name": "KRACKED_OS",
+    "description": "KRACKED_OS standalone builder workspace",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#22c55e",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "/icons/kd-logo.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "productivity",
+        "utilities",
+        "education",
+        "developer"
+    ],
+    "lang": "ms-MY",
+    "dir": "ltr",
+    "screenshots": [
+        {
+            "src": "/screenshots/dashboard.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Builder Dashboard"
+        },
+        {
+            "src": "/screenshots/chat.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "AI Chat Interface"
+        },
+        {
+            "src": "/screenshots/studio.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Builder Studio"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 480
+    },
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    }
+}
