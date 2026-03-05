@@ -1,34 +1,45 @@
-# KRACKED_OS Standalone
+# KRACKED_OS 🚀
 
-This export runs without login and without Supabase.
+**KRACKED_OS** is a modular, AI-first ecosystem designed for the next generation of builders. Built on the philosophy of **NECB (Now Everyone Can Build)**, it combines high-performance web architecture with integrated AI agents and persistent memory systems.
 
-## Run
+## 📁 Repository Structure
 
+We've organized this workspace into specialized domains to maximize AI efficiency and developer clarity:
+
+### 🧠 AI Ecosystem
+- **`system/`**: The core AI identity. Contains the **IJAM Unified Documentation**, Skill Creator guides, and agent architecture specifications.
+- **`skills/`**: A library of modular knowledge packages (e.g., educational mentorship, ethical tech guidance) that extend the AI's capabilities.
+- **`memory/`**: The experience layer. Includes the **memory-extract** engine and persistent logs (`log.md`) that allow AI agents to recall previous session context.
+
+### 🛠️ Core Project
+- **`src/`**: The main React source code for the KRACKED_OS workspace.
+- **`public/`**: Static assets, including the custom transparency-optimized KDA favicon.
+- **`tools/`**: Advanced scripting agents and automation utilities.
+- **`references/`**: Project-specific knowledge bases and syllabi.
+
+## 🚀 Key Features
+
+- **Interactive Loading Screen**: A visually stunning, 8-bit workstation interface with real-time clock and dynamic "Vibe Coding" animations.
+- **Persistent AI Proxy (IJAM)**: An AI persona with a chill, Malaysian-casual vibe that remembers your project preferences and coding style.
+- **Skill Promotion System**: The AI proactively identifies repeating patterns and offers to formalize them into reusable "Skills".
+- **Vite-Powered Performance**: Near-instant HMR and optimized build cycles.
+
+## 🛠️ Quick Start
+
+### 1. Installation
 ```bash
 npm install
+```
+
+### 2. Development
+```bash
 npm run dev
 ```
 
-## Build
+### 3. Engagement
+Load the `system/IJAM_UNIFIED.md` file into your AI's context to activate the **IJAM Proxy** and begin building with full project awareness.
 
-```bash
-npm run build
-npm run preview
-```
+---
 
-## Optional AI Key
-
-Create `.env` from `.env.example` and set:
-
-- `VITE_NVIDIA_API_KEY_70B`
-
-If unset, terminal assistant falls back to local intelligence.
-
-## Local Storage Keys
-
-- `ijamos_profile`
-- `ijamos_showcase_url`
-- `ijamos_website_url`
-- `ijamos_game_state`
-- `vibe_os_booted`
-- `vibe_wallpaper`
+**Crafted with 💛 by KrackedDevs**
+*NECB: Now Everyone Can Build*

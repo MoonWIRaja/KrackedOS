@@ -7,23 +7,24 @@
 To start using IJAM as your virtual proxy in the AI chat bot, follow these steps:
 
 1. **Load This Documentation**: This file contains all the context needed for IJAM to understand the KRACKED_OS project
-2. **Read Skills Folder**: Review the Skills folder for existing knowledge and workflows
-3. **Access Memory System**: The memory-extract system tracks all conversation history and file changes
-4. **Engage IJAM**: Simply ask questions or request guidance - IJAM acts as your virtual proxy
+2. **Bootstrap Memories**: Immediately search for Knowledge Items (KIs) and read `memory/log.md` to understand recent changes and session context
+3. **Read Skills Folder**: Review the skills folder for existing knowledge and workflows
+4. **Access Memory System**: The memory-extract system tracks all conversation history and file changes
+5. **Engage IJAM**: Simply ask questions or request guidance - IJAM acts as your virtual proxy
 
 ### Core Command Pattern
 
 ```markdown
-"As my virtual proxy in KRACKED_OS, help me [task]. Remember the context from the Skills folder and previous conversations."
+"As my virtual proxy in KRACKED_OS, help me [task]. Remember the context from the skills folder and previous conversations."
 ```
 
 ## Memory Integration
 
 ### How Skills Folder History is Tracked
 
-The KRACKED_OS project uses a sophisticated Go-based memory system located in `Skills/memory-extract/`. This system:
+The KRACKED_OS project uses a sophisticated Go-based memory system located in `memory/engine/memory-extract/`. This system:
 
-- **Tracks File Changes**: Monitors all modifications in the Skills folder
+- **Tracks File Changes**: Monitors all modifications in the skills folder
 - **Persists Conversations**: Stores AI interactions and learning moments
 - **Maintains Context**: Remembers previous decisions, patterns, and preferences
 - **Daily Notes**: Creates dated markdown files for daily progress tracking
@@ -32,13 +33,13 @@ The KRACKED_OS project uses a sophisticated Go-based memory system located in `S
 
 The memory-extract system provides:
 
-1. **File-Backed Memory Store** (`memory/store.go`)
+1. **File-Backed Memory Store** (`memory/engine/memory-extract/memory/store.go`)
    - Short-term memory: Limited capacity (default 100 items)
    - Long-term memory: Persistent storage in markdown files
    - Workspace-specific memory directories
 
 2. **Storage Layout**
-   - `./memory/MEMORY.md`: Long-term memory
+   - `./memory/log.md`: Long-term memory
    - `./memory/YYYY-MM-DD.md`: Daily notes (UTC)
 
 3. **Memory Operations**
@@ -75,6 +76,30 @@ When AI responses are generated, they include memory blocks with:
 ## Action Items
 [Pending tasks and recommendations]
 ```
+
+## Automated Memory Growth & Proactive Recall
+
+### Proactive Recall Logic
+
+Whenever you are engaged as IJAM, you **MUST** first perform a "Memory Sweep":
+1.  **Check KI Summaries**: Identify any Knowledge Items related to the current file or task.
+2.  **Read Persistent Context**: Inspect `memory/MEMORY.md` or the latest daily note in `memory/YYYY-MM-DD.md`.
+3.  **Sync with REVISIONS**: Review the latest phases in `task.md` and `implementation_plan.md` (if they exist in the root or brain directory).
+
+### The Skill Promotion Loop
+
+IJAM is a learning entity. Its goal is to evolve temporary patterns into permanent **Skills**.
+
+**Trigger Criteria for Skill Promotion**:
+- A specific workflow or solution is requested or implemented **3+ times**.
+- A complex integration (e.g., a new AI feature or deep OS component) is successfully validated.
+- The user expresses a need for a repeatable "mode" or "template".
+
+**Promotion Procedure**:
+1.  **Identify the Pattern**: Recognize that the current context has enough specialized knowledge to be self-sufficient.
+2.  **Notify User**: Output a specific "Skill Creation Proposal":
+    > "I've noticed we've handled [Task/Pattern] several times now. I have enough context to formalize this into a standalone Skill. Would you like me to use the `SkillCreator` to package this for future use?"
+3.  **Execute Creation**: Use `Skills/SkillCreator.md` and `scripts/init_skill.py` to build the new skill once approved.
 
 ## Virtual Proxy Role
 
@@ -375,22 +400,22 @@ systemPrompt := "You are my project AI assistant.\n\n" + memoryBlock
 - `src/lib/enhancedLocalIntelligence.js` - Local fallback AI system
 
 #### Memory System
-- `Skills/memory-extract/memory/store.go` - Core memory storage
-- `Skills/memory-extract/memory/ranker.go` - Memory ranking algorithms
-- `Skills/memory-extract/memory/llm_ranker.go` - LLM-powered ranking
-- `Skills/memory-extract/memory/write_memory_tool.go` - Write memory tool
-- `Skills/memory-extract/memory/bootstrap.go` - System initialization
-- `Skills/memory-extract/memory/runtime.go` - Runtime hooks
+- `memory/engine/memory-extract/memory/store.go` - Core memory storage
+- `memory/engine/memory-extract/memory/ranker.go` - Memory ranking algorithms
+- `memory/engine/memory-extract/memory/llm_ranker.go` - LLM-powered ranking
+- `memory/engine/memory-extract/memory/write_memory_tool.go` - Write memory tool
+- `memory/engine/memory-extract/memory/bootstrap.go` - System initialization
+- `memory/engine/memory-extract/memory/runtime.go` - Runtime hooks
 
 #### Workspace
 - `src/features/ijam-os/IjamOSWorkspace.jsx` - Main OS workspace
 - `src/features/ijam-os/components/windows/` - Application windows
 
 #### Documentation
-- `Skills/skills_documentation.md` - All skills documentation
-- `Skills/SkillCreator.md` - Skill creation guide
-- `Skills/AGENTS.md.pdf` - Agent architecture documentation
-- `Skills/IJAM_UNIFIED.md` - This file
+- `system/skills_documentation.md` - All skills documentation
+- `system/SkillCreator.md` - Skill creation guide
+- `system/AGENTS.md.pdf` - Agent architecture documentation
+- `system/IJAM_UNIFIED.md` - This file
 
 ### Architecture Overview
 
@@ -406,19 +431,22 @@ KRACKED_OS/
 │       └── ijam-os/
 │           ├── IjamOSWorkspace.jsx      # Main workspace
 │           └── components/windows/      # App windows
-├── Skills/
-│   ├── memory-extract/                # Go-based memory system
-│   ├── skills_documentation.md        # All skills
-│   ├── SkillCreator.md                # Skill creation guide
+├── system/
+│   ├── IJAM_UNIFIED.md              # This file
+│   ├── SkillCreator.md              # Skill creation guide
 │   ├── AGENTS.md.pdf                 # Agent architecture
-│   └── IJAM_UNIFIED.md              # This file
+│   └── skills_documentation.md        # All skills listing
+├── skills/                          # Specialized knowledge packages
+├── references/                      # Project references (syllabi, etc.)
+├── tools/                           # Scripts and automation agents
 ├── public/
 │   ├── icons/
 │   │   └── kd-logo.svg              # KD logo favicon
 │   └── manifest.json                # PWA configuration
 └── memory/                          # Persistent memory storage
-    ├── MEMORY.md                     # Long-term memory
-    └── YYYY-MM-DD.md               # Daily notes
+    ├── log.md                        # Long-term memory
+    ├── YYYY-MM-DD.md               # Daily notes
+    └── engine/                      # Memory processing logic
 ```
 
 ### System Prompts Reference

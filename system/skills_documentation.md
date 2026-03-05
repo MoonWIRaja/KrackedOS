@@ -59,11 +59,11 @@ Before you dive into the code, ensure you have the following tools installed and
 - **Standups**: Everyday at [Time] in [Location/Link].
 
 ## 📂 Local Resources
-We have a local reference project available on your desktop:
-`c:\Users\ssahrom\Desktop\AntiGravity\KRACKED_OS`
+We have a local reference project available:
+`e:\WebAPP\KDA_OS`
 
 This folder contains:
--   **SkillCreator.md**: Advanced guide for building skills.
+-   **system/SkillCreator.md**: Advanced guide for building skills.
 -   **Source Code**: Example implementation of a KRACKED_OS app.
 -   **Styling**: Reference for our design system.
 
