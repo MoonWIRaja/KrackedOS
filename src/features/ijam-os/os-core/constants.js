@@ -89,10 +89,19 @@ export const DEFAULT_DESKTOP_LAYOUT = {
 export const DEFAULT_SESSION_STATE = {
   isBooted: false,
   lastBootedAt: null,
-  lastRuntimeMode: OS_RUNTIME_MODES.WEB_DEMO
+  lastRuntimeMode: OS_RUNTIME_MODES.WEB_DEMO,
+  windowLayout: {},
+  explorerPreferences: {
+    path: [],
+    view: 'icons',
+    showDetailsPane: true,
+    sort: 'name-asc'
+  },
+  windowZCounter: 100
 };
 
 export const BUILT_IN_WALLPAPERS = [
+  { id: 'kdos', name: 'KDOS', type: 'image', src: '/icons/KDOS.png', source: 'built-in' },
   { id: 'merdeka', name: 'Merdeka Red', type: 'gradient', colors: ['#DC2626', '#FFFFFF', '#FF0000'], source: 'built-in' },
   { id: 'jalur', name: 'Jalur Gemilang', type: 'animated-gradient', colors: ['#010066', '#FFFFFF', '#CC0000'], source: 'built-in' },
   { id: 'wau', name: 'Wau Kuning', type: 'gradient', colors: ['#FFCC00', '#FFD700', '#FFFAC0'], source: 'built-in' },
@@ -108,7 +117,7 @@ export const BUILT_IN_WALLPAPERS = [
 ];
 
 export const DEFAULT_PERSONALIZATION = {
-  currentWallpaperId: 'night',
+  currentWallpaperId: 'kdos',
   fit: 'fill',
   history: [],
   importedWallpaperIds: [],
@@ -135,12 +144,8 @@ export const FILE_KIND_BY_EXTENSION = {
   '.svg': 'image'
 };
 
-export function getDefaultWallpaperId(date = new Date()) {
-  const hour = date.getHours();
-  if (hour >= 6 && hour < 12) return 'pagi-morning';
-  if (hour >= 12 && hour < 18) return 'tengahari';
-  if (hour >= 18 && hour < 21) return 'petang';
-  return 'malam';
+export function getDefaultWallpaperId() {
+  return 'kdos';
 }
 
 export function normalizeLegacyWallpaperId(wallpaperId) {
